@@ -1,24 +1,21 @@
 // Module dependencies
-var mongoose = require('mongoose'),
-   Schema = mongoose.Schema,
+const mongoose = require('mongoose'),
    Developer = require('../models/developer'),
    State = require('../models/state'),
-   util = require('util'),
    dbConfig = require('./configLoader').databaseConfig,
-//    connectionString = 'mongodb://' + dbConfig.host + '/' + dbConfig.database,
    connectionString = `mongodb://${dbConfig.host}/${dbConfig.database}`,
    connection = null;
 
-class DBSeeder {
-    
-     init () {
+class DBSeeder {    
+
+    init() {
         mongoose.connection.db.listCollections({name: 'developers'})
-            .next(function(err, collinfo) {
-                if (!collinfo) {
-                    console.log('Starting dbSeeder...');
-                    seed();
-                }
-            });
+                .next((err, collinfo) => {
+                    if (!collinfo) {
+                        console.log('Starting dbSeeder...');
+                        this.seed();
+                    }
+                });
     }
     
     seed() {
