@@ -1,35 +1,30 @@
 <div class="container">
-<div class="row" >
-<div class="card col-md-3" style="background: #E0DEDE" *ngFor="let developer of developers">
-  <div class="card-block">
-    <h4 class="card-title">
-      <a href="/#/update/{{developer.id}}" >{{ developer.firstname }} {{ developer.lastname }}</a>
-    </h4>
-    <div class="row" style=" margin-top: 14%;">
-    <img src="../assets/images/icon-mail.svg" style="width: 26px; height: 26px">
-    <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 2px;">{{ developer.email }}</h6>
-  </div>
-    <div class="row" style=" margin-top: 14%;">
-      <h6>&nbsp; &nbsp; &nbsp; Competence&nbsp;:&nbsp; </h6> &nbsp; {{ developer.competence }}
-    </div>
-    <div class="row">
-      <h6>&nbsp; &nbsp; &nbsp; Langage&nbsp;:&nbsp; </h6> &nbsp; {{ developer.langage }}
-    </div>
-    <div class="btn " style=" margin-top: 14%;">
-      <a href="">
-           <img src="../assets/images/icon-maps.svg" style="width: 26px;">
-      </a>
-      <a href="">
-        <img src="../assets/images/icon-edit.png" style="width: 26px;">
-      </a>
-      <a href="">
-         <img src="../assets/images/icon-delete.png" (click)="delete(developer)" style="width: 26px;">
-      </a>
-</div>
+  <div class="row">
+    <div class="card col-md-3" style="background: #E0DEDE" *ngFor="let developer of developers">
+      <div class="card-block">
+        <h4 class="card-title">
+          <a href="/#/update/{{developer.id}}">{{ developer.firstname }} {{ developer.lastname }}</a>
+        </h4>
+        <div class="row" style=" margin-top: 14%;">
+          <img src="../assets/images/icon-mail.svg" style="width: 26px; height: 26px">
+          <h6 class="card-subtitle mb-2 text-muted" style="margin-top: 2px;">{{ developer.email }}</h6>
+        </div>
 
-  </div>
-</div>
-</div >
-<button  (click)="add(developer)" class="btn btn-default btn-circle pull-right navbar-toggler-right"><i class="fa fa-user"><h5 style="color:white; margin-top: 11px;">+</h5></i></button>
+        <div class="btn " style=" margin-top: 14%;">
+          <a href="">
+            <img src="../assets/images/icon-maps.svg" style="width: 26px;">
+          </a>
+          <a href="">
+            <img src="../assets/images/icon-edit.png" style="width: 26px;">
+          </a>
+          <a href="">
+            <img src="../assets/images/icon-delete.png" (click)="delete(developer)" style="width: 26px;">
+          </a>
+        </div>
 
-</div >
+      </div>
+    </div>
+  </div>
+  <button (click)="add(developer)" class="btn btn-default btn-circle pull-right navbar-toggler-right"><i class="fa fa-user"><h5 style="color:white; margin-top: 11px;">+</h5></i></button>
+
+</div>

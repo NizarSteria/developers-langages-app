@@ -31,6 +31,22 @@ export class DataService {
             .catch(this.handleError);
     }
 
+    deleteDeveloper(id: string) : Observable<boolean> {
+        return this.http.delete(this.url + '/' + id)
+                   .map((res: Response) => res.json().status)
+                   .catch(this.handleError);
+    }
+
+    //Not used but could be called to pass "options" (3rd parameter) to 
+    //appropriate POST/PUT/DELETE calls made with http
+    getRequestOptions() {
+        const csrfToken = ''; //would retrieve from cookie or from page
+        const options = new RequestOptions({
+            headers: new Headers({ 'x-xsrf-token': csrfToken })
+        });
+        return options;
+    }
+
     handleError(error: any) {
         console.error('server error:', error);
         if (error instanceof Response) {

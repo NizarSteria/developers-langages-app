@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../shared/services/data.service';
-import { IDeveloper} from '../shared/interfaces';
+import { IDeveloper } from '../shared/interfaces';
 
 @Component({
   moduleId: module.id,
@@ -12,9 +12,9 @@ import { IDeveloper} from '../shared/interfaces';
   styleUrls: ['./developers.component.css']
 })
 export class DevelopersComponent implements OnInit {
-dialogStatus = 'inactive';
-developers = [];
-developer: any = {
+  dialogStatus = 'inactive';
+  developers = [];
+  developer: any = {
     id: '',
     firstname: '',
     lastname: '',
@@ -22,34 +22,26 @@ developer: any = {
     competence: '',
     langage: ''
   };
-  constructor( private http: Http,
-  private route: ActivatedRoute,
-  private router: Router, private dataService: DataService
-) { }
+  constructor(private http: Http,
+    private route: ActivatedRoute,
+    private router: Router, private dataService: DataService
+  ) { }
 
   ngOnInit() {
-     this.dataService.getDevelopers()
-            .subscribe((data: IDeveloper[]) => this.developers = data);
+    this.dataService.getDevelopers()
+      .subscribe((data: IDeveloper[]) => this.developers = data);
   }
 
   delete(developer) {
-    this.http.delete(`../assets/data/developers.json/${developer.id}`)
-      .map( res => res.json() )
-      .subscribe( developers => this.developers = developers);
-      this.router.navigate(['developers']);
-
-      console.log(this.developers);
+    this.dataService.deleteDeveloper(developer.id);
   }
 
+  showDialog() {
+    this.dialogStatus = 'active';
+  }
 
-   
-
- showDialog() {
-   this.dialogStatus = 'active';
- }
-
- hideDialog() {
-   this.dialogStatus = 'inactive';
- }
+  hideDialog() {
+    this.dialogStatus = 'inactive';
+  }
 
 }
